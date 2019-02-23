@@ -15,9 +15,26 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
+          {% if user.is_authenticated %}
           <li class="nav-item active">
             <a class="nav-link" style="color: white;" href="{% url 'classroom-create' %}">New Classroom</a>
           </li>
+                <li class="nav-item">
+        <a class="nav-link" style="color: white;">{{request.user}}</a>
+      </li>
+                <li class="nav-item">
+        <a class="nav-link" style="color: white;"  href="{% url 'signout' %}">SignOut</a>
+      </li>
+      {% else %}
+             <li class="nav-item">
+        <a class="nav-link" style="color: white;"  href="{% url 'signup' %}">SignUp</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" style="color: white;"  href="{% url 'signin' %}">SignIn</a>
+      </li>
+      {% endif %}
+
+
         </ul>
       </div>
     </nav>
